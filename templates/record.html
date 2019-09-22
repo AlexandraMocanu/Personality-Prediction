@@ -1,0 +1,57 @@
+{% extends "home.html" %}
+
+{% block content %}
+
+    <div id="gtco-intro">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1 text-center">
+                    <div class="dt js-height">
+                        <div class="dtc animate-box">
+                            <h4 class="gradient-text"><b>Record a video with your webcam! :)</b></h4>
+                            
+                            <div id="recorder" class="col-md-5 col-md-offset-1">
+                                <button id="record" class="btn btn-gradient">Record</a></button>
+                                <button id="stop" class="btn btn-gradient">Stop</a></button>
+                                <a href="{{ url_for('predict') }}">
+                                    <button id="predict" onclick="$('#loading').show();$('#form_upload').hide();" class="btn btn-gradient">Predict</button>
+                                </a>
+
+                                <p><a id="download"></a></p>
+
+                                <script>
+                                var username = {{ username | tojson }};
+                                var records_folder = {{ records_folder | tojson }};
+                                </script>
+
+                                <script src="{{ url_for('static', filename='recorder.js') }}"></script>
+                            </div>
+
+                        </div>
+
+                        <div id="loading" style="display:none;" class="dtc animate-box">
+                            <img src="{{ url_for('static', filename='images/loading_ellipsis.gif') }}" alt="" />
+                            Uploading and calling models :)
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="col-md-5">
+                    <div class="dt js-height">
+                        <div class="dtc animate-box">
+                            <img id="video" src="{{ url_for('video_viewer') }}">
+                            <!-- <a href="#"><img src="{{ url_for('static', filename='images/emotions2_free.jpg') }}" class="img-responsive"></a> -->
+                        </div>	
+                    </div>
+                </div>
+            </div>
+
+            {% include "input_form.html" %}
+
+        </div>
+    </div>
+
+{% endblock %}
+

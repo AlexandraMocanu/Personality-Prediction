@@ -1,0 +1,50 @@
+{% extends "home.html" %}
+
+{% block content %}
+
+    <div id="gtco-intro">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1 text-center">
+                    <div class="dt js-height">
+                        <div class="dtc animate-box" id="form_upload">
+                            <h4 class="gradient-text"><b>Upload an image or a video! :)</b></h4>
+                            <form method=post enctype=multipart/form-data>
+                                <input type="file" name=file_4upload class="btn btn-gradient"/>
+                                <input onclick="$('#loading').show();$('#form_upload').hide();" type=submit value=Upload class="btn btn-gradient"/>
+                                
+                                <!-- <script>
+                                    function loading_js() {
+                                        document.getElementById("upload_button").onclick = "$('#loading').show();";
+                                    }
+                                </script> -->
+
+                            </form>
+
+                        </div>
+
+                        <div id="loading" style="display:none;" class="dtc animate-box">
+                            <img src="{{ url_for('static', filename='images/loading_ellipsis.gif') }}" alt="" />
+                            Uploading and calling models :)
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-5 col-md-offset-1 text-center">
+                    <div class="dt js-height">
+                        <div class="dtc animate-box">
+                            <a href="#"><img src="{{ url_for('static', filename='images/emotions2_free.jpg') }}" class="img-responsive"></a>
+                        </div>	
+                    </div>
+                </div>
+            </div>
+
+            {% include "input_form.html" %}
+
+        </div>
+    </div>
+
+{% endblock %}
+

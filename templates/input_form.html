@@ -1,0 +1,195 @@
+{% if saved_assess == True %}
+<h5 class="gradient-text"><b>Great! We saved your info, now just upload a video or an image! :)</b></h5>
+{% endif %}
+
+{% if saved_assess == False %}
+
+<h5 class="gradient-text"><b>If you feel like it, please introduce some details about yourself, such as your current emotional state.
+<p>Just complete the following form and click "SAVE", we'll take them into account when processing your video :)</p>
+<p>It's okay if you don't enter any :)</p></b></h5>
+<div class="row">
+    
+    <form method=post>
+        <fieldset class="form-group">
+            
+            <div class="row">
+                <legend class="col-form-label gradient-text">Gender</legend>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <!-- female = 0; male = 1 -->
+                        <input class="form-check-input" type="radio" name="gender" id="female" value="0" checked>
+                        <label class="form-check-label gradient-text" for="female">
+                        Female
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gender" id="male" value="1">
+                        <label class="form-check-label gradient-text" for="male">
+                        Male
+                        </label>
+                    </div>
+                </div>
+                <p></p>
+            </div>
+
+            <div class="row">
+                <legend for="age" class="col-form-label gradient-text">Age</legend>
+                <input type="number" class="form-check-input form-control" name="age" id="age" for="age" required>
+                <p></p>
+            </div>
+
+            <div class="row">
+                <legend for="initial_assessment" class="col-form-label gradient-text">Initial Assesments</legend>
+                <div class="col-md-5 col-md-offset-1 center">
+                    <h5 class="gradient-text"><b>Here you can select the emotions you're currently feeling.</b></h6>
+                    <!-- <div class="col-sm-10"> -->
+                        <div class="form-check">
+
+                            <input type="hidden" name="disgust" id="disgust" value="0" />
+                            <input class="form-check-input" type="checkbox" name="disgust" id="disgust" value="1">
+                                <label class="form-check-label gradient-text" for="disgust">
+                                    Disgust
+                                </label>
+                                
+                            <input type="hidden" name="happiness" id="happiness" value="0" />
+                            <input class="form-check-input" type="checkbox" name="happiness" id="happiness" value="1">
+                                <label class="form-check-label gradient-text" for="happiness">
+                                    Happiness
+                                </label>
+                            
+                            <input type="hidden" name="surprise" id="surprise" value="0" />
+                            <input class="form-check-input" type="checkbox" name="surprise" id="surprise" value="1">
+                                <label class="form-check-label gradient-text" for="surprise">
+                                    Surprise
+                                </label>
+                            
+                            <input type="hidden" name="anger" id="anger" value="0" />
+                            <input class="form-check-input" type="checkbox" name="anger" id="anger" value="1">
+                                <label class="form-check-label gradient-text" for="anger">
+                                    Anger
+                                </label>
+                            <p></p>
+                            
+                            <input type="hidden" name="fear" id="fear" value="0" />
+                            <input class="form-check-input" type="checkbox" name="fear" id="fear" value="1">
+                                <label class="form-check-label gradient-text" for="fear">
+                                    Fear
+                                </label>
+                            
+                            <input type="hidden" name="sadness" id="sadness" value="0" />
+                            <input class="form-check-input" type="checkbox" name="sadness" id="sadness" value="1">
+                                <label class="form-check-label gradient-text" for="sadness">
+                                    Sadness
+                                </label>
+                            
+                            <input type="hidden" name="neutral" id="neutral" value="0" />
+                            <input class="form-check-input" type="checkbox" name="neutral" id="neutral" value="1">
+                                <label class="form-check-label gradient-text" for="neutral">
+                                    Neutral
+                                </label>
+                        </div>
+                    <!-- </div> -->
+                </div>
+
+                <div class="col-md-5 center">
+                    <h5 class="gradient-text"><b>Here we'd like your current state of other emotions levels:</b></h5>
+                    <div class="col-sm-10">
+                        <!-- <div > -->
+                        <div class="form" oninput="output_arousal.value = Math.round(arousal_in.valueAsNumber)">
+                            <div class="range">
+                                <label for="arousal" class="gradient-text">Arousal</label>
+                                <input type="range" name="arousal_in" id="arousal_in" min="0" max="9" steps="1" value="5">
+                                <div class="range-output">
+                                    <output class="output" name="output_arousal" id="output_arousal" for="arousal">
+                                        5
+                                    </output>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="form" oninput="output_valence.value = Math.round(valence_in.valueAsNumber)">
+                            <div class="range">
+                                <label for="valence" class="gradient-text">Valence</label>
+                                <input type="range" name="valence_in" id="valence_in" min="0" max="9" steps="1" value="5">
+                                <div class="range-output">
+                                    <output class="output" name="output_valence" id="output_valence" for="valence">
+                                        5
+                                    </output>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="form" oninput="output_dominance.value = Math.round(dominance_in.valueAsNumber)">
+                            <div class="range">
+                                <label for="dominance" class="gradient-text">Dominance</label>
+                                <input type="range" name="dominance_in" id="dominance_in" min="0" max="9" steps="1" value="5">
+                                <div class="range-output">
+                                    <output class="output" name="output_dominance" id="output_dominance" for="dominance">
+                                        5
+                                    </output>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="form" oninput="output_liking.value = Math.round(liking_in.valueAsNumber)">
+                            <div class="range">
+                                <label for="liking" class="gradient-text">Liking</label>
+                                <input type="range" name="liking_in" id="liking_in" min="0" max="9" steps="1" value="5">
+                                <div class="range-output">
+                                    <output class="output" name="output_liking" id="output_liking" for="liking">
+                                        5
+                                    </output>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <div class="form" oninput="output_familiarity.value = Math.round(familiarity_in.valueAsNumber)">
+                            <div class="range">
+                                <label for="familiarity" class="gradient-text">Familiarity</label>
+                                <input type="range" name="familiarity_in" id="familiarity_in" min="0" max="9" steps="1" value="5">
+                                <div class="range-output">
+                                    <output class="output" name="output_familiarity" id="output_familiarity" for="familiarity">
+                                        5
+                                    </output>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-sm-10">
+                        <div class="form" oninput="output_neutral.value = Math.round(neutral_in.valueAsNumber)">
+                            <div class="range">
+                                <label for="neutral" class="gradient-text">Neutral</label>
+                                <input type="range" name="neutral_in" id="neutral_in" min="0" max="9" steps="1" value="5">
+                                <div class="range-output">
+                                    <output class="output" name="output_neutral" id="output_neutral" for="neutral">
+                                        5
+                                    </output>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <form oninput="output.value = Math.round(range.valueAsNumber / 1000)"> -->
+                            <!-- <div class="range">
+                                <label for="neutral" class="gradient-text">Neutral</label>
+                                <input name="range" type="range" name="neutral" id="neutral" min="0" max="9" steps="1" value="5">
+                                <div class="range-output">
+                                    <output class="output" name="output" for="range">
+                                        5
+                                    </output>
+                                </div>
+                            </div> -->
+                        <!-- </form> -->
+                    <!-- </div> -->
+                </div>
+            </div>
+
+        </fieldset>
+        <input type=submit value=Save name=save_selfassess class="btn btn-gradient" />
+    </form>
+
+</div>
+
+{% endif %}

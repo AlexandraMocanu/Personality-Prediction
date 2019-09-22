@@ -1,0 +1,189 @@
+{% extends "home.html" %}
+
+{% block content %}
+
+    <div id="gtco-intro">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1 text-center">
+                    <div class="dt js-height">
+                        <div class="dtc animate-box">
+                            <h4 class="gradient-text"><b>Here are your results, {{ username }}! :)</b></h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5 col-md-offset-1 text-center">
+                    <div class="dt js-height">
+                        <div class="dtc animate-box">
+                            <a href="#"><img src="{{ url_for('static', filename='images/emotions2_free.jpg') }}" class="img-responsive"></a>
+                        </div>	
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="row">
+
+                    <legend class="col-form-label gradient-text"><b>(1) Conv2D Model Results: </b></legend>
+
+                    <div class="row">
+                        
+                            <legend class="col-form-label gradient-text"><b>PANAS</b></legend>
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Label</th>
+                                            <th scope="col">Intensity (1-6)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in panas_conv2d %}
+                                            <tr>
+                                                <th scope="row">{{ item }}</th>
+                                                <td>{{ panas_conv2d[item] }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div><p></p></div>
+                            
+                            <legend class="col-form-label gradient-text"><b>PERSONALITY</b></legend>
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Label</th>
+                                            <th scope="col">Intensity (1-8)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in personality_conv2d %}
+                                            <tr>
+                                                <th scope="row">{{ item }}</th>
+                                                <td>{{ personality_conv2d[item] }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div><p></p></div>
+
+                            <legend class="col-form-label gradient-text"><b>FINAL ASSESSMENT</b></legend>
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Label</th>
+                                            <th scope="col">Intensity (1-10 and 0-1)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in fassess_conv2d %}
+                                            <tr>
+                                                <th scope="row">{{ item }}</th>
+                                                <td>{{ fassess_conv2d[item] }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <div><p></p></div>
+                            <div><p></p></div>
+                    </div>
+
+                </div>
+
+                {% if also_lrcn == True %}
+
+                <div class="row">
+
+                    <legend class="col-form-label gradient-text"><b>(2) LRCN Model Results: </b></legend>
+
+                    <div class="row">
+                        
+                            <legend class="col-form-label gradient-text"><b>PANAS</b></legend>
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Label</th>
+                                            <th scope="col">Intensity (1-6)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in panas_lrcn %}
+                                            <tr>
+                                                <th scope="row">{{ item }}</th>
+                                                <td>{{ panas_lrcn[item] }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+        
+                            </div>
+                            <div><p></p></div>
+
+                            <legend class="col-form-label gradient-text"><b>PERSONALITY</b></legend>
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Label</th>
+                                            <th scope="col">Intensity (1-8)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in personality_lrcn %}
+                                            <tr>
+                                                <th scope="row">{{ item }}</th>
+                                                <td>{{ personality_lrcn[item] }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+        
+                            </div>
+                            <div><p></p></div>
+
+                            <legend class="col-form-label gradient-text"><b>FINAL ASSESSMENT</b></legend>
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Label</th>
+                                            <th scope="col">Intensity (1-10 and 0-1)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in fassess_lrcn %}
+                                            <tr>
+                                                <th scope="row">{{ item }}</th>
+                                                <td>{{ fassess_lrcn[item] }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+        
+                            </div>
+                            <div><p></p></div>
+                    </div>
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}
+

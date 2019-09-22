@@ -1,0 +1,34 @@
+{% extends "home.html" %}
+
+{% block content %}
+
+    <div id="gtco-intro">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1 text-center">
+                    <div class="dt js-height">
+                        <div class="dtc animate-box">
+                            <h4 class="gradient-text"><b>I'm sorry, {{ username }}, it seems that something went wrong,
+                                 as I can't fulfill your request :( (maybe you didn't upload an allowed file type, remeber that 
+                                 the types of files I know how to handle are 'avi', 'mov', 'mp4', 'png', 'jpg' and 'jpeg' :) ). 
+                                 Please try again!
+                            </b></h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-5 col-md-offset-1 text-center">
+                    <div class="dt js-height">
+                        <div class="dtc animate-box">
+                            <a href="#"><img src="{{ url_for('static', filename='images/emotions2_free.jpg') }}" class="img-responsive"></a>
+                        </div>	
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
